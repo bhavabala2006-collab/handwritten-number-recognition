@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Datasets (can be large / regenerated)
+data/raw/*
+data/processed/*
+data/train/*
+data/validation/*
+data/test/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/train/.gitkeep
+!data/validation/.gitkeep
+!data/test/.gitkeep
+
+# Trained models (large binary files - regenerate with train.py)
+models/trained_model/*.keras
+models/trained_model/*.h5
+models/trained_model/class_indices.json
+models/trained_model/training_history.json
+!models/trained_model/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Handwritten Number Recognition</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>Real-Time Handwritten Number Recognition</h1>
+    <p class="subtitle">Write a number (1&ndash;10) on paper and hold it inside the box below.</p>
+  </header>
+
+  <main>
+    <section class="camera-panel">
+      <div class="video-wrapper" id="video-wrapper">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="roi-overlay"></canvas>
+        <canvas id="capture-canvas" hidden></canvas>
+      </div>
+
+      <div class="controls">
+        <button id="start-btn" class="btn btn-primary">Start Camera</button>
+        <button id="stop-btn" class="btn" disabled>Stop Camera</button>
+        <button id="clear-btn" class="btn">Clear</button>
+      </div>
+
+      <p id="status-line" class="status-line">Camera stopped.</p>
+    </section>
+
+    <section class="result-panel">
+      <h2>Prediction</h2>
+      <div id="number-display" class="number-display">&mdash;</div>
+
+      <div class="confidence-row">
+        <span>Confidence:</span>
+        <div class="confidence-bar-track">
+          <div id="confidence-bar" class="confidence-bar-fill"></div>
+        </div>
+        <span id="confidence-value">0%</span>
+      </div>
+
+      <p id="status-badge" class="status-badge status-idle">Idle</p>
+
+      <div class="raw-debug">
+        <p>Raw (unsmoothed) prediction: <span id="raw-number">&mdash;</span> (<span id="raw-confidence">0%</span>)</p>
+      </div>
+
+      <div class="tips">
+        <h3>Tips for best results</h3>
+        <ul>
+          <li>Use good, even lighting - avoid strong backlight.</li>
+          <li>Write with a dark pen on a light, plain background.</li>
+          <li>Keep the number fully inside the green detection box.</li>
+          <li>For "10", write the "1" and the "0" close together as one number.</li>
+          <li>Hold the writing steady for about a second for the prediction to stabilize.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Confidence threshold: {{ confidence_threshold }} &middot; Runs fully offline / locally.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
