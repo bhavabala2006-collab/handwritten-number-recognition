@@ -4,7 +4,7 @@ scikit-learn==1.4.2
 matplotlib==3.8.4
 
 # Computer vision
-opencv-python==4.9.0.80
+opencv-python-headless==4.9.0.80
 Pillow==10.3.0
 
 # Machine learning (CPU build works out of the box on Windows/macOS/Linux)
@@ -18,3 +18,4 @@ pytest==8.2.0
 
 # Config / misc
 PyYAML==6.0.1
+gunicorn==22.0.0
